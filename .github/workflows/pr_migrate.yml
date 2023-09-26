@@ -12,9 +12,6 @@ on:
       target_repo:
         description: 'Target repository <org/repo> in GHEC'
         required: true
-  push:
-    branches:
-      - github-actions
 
 jobs:
   migrate-pr:
@@ -30,4 +27,4 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run Python script
-        run: python3 ./migrate_pr.py
+        run: python3 migrate_pr.py
