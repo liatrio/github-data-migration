@@ -26,5 +26,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install Python libraries
+        run: pip3 install -r requirements.txt
+
       - name: Run Python script
         run: python3 pr_migrate.py
