@@ -78,6 +78,7 @@ ghes_repo_url = f"https://{ghes_pat}@{base_ghes_hostname}/{source_repo}.git"
 
 # Create a Github Cloud instance
 g = Github(ghec_pat)
+ghec_repo_url = f"https://x-access-token:{ghec_pat}@github.com/{source_repo}.git"
 
 # Get the source and target repositories
 source_repo = ge.get_repo(f"{source_repo}")
@@ -89,7 +90,7 @@ local_target_repo_path = f"./{target_repo.name}"
 
 # Clone the source and target repository if they're not already cloned
 clone_repo(ghes_repo_url, local_source_repo_path)
-clone_repo(target_repo.clone_url, local_target_repo_path)
+clone_repo(ghec_repo_url, local_target_repo_path)
 
 # Create a Repo object for the source and target repository
 local_source_repo = Repo(local_source_repo_path)
