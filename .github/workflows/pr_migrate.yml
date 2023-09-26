@@ -24,7 +24,7 @@ jobs:
       TARGET_REPO: ${{ github.event.inputs.target_repo }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Run Python script
-        run: python3 migrate_pr.py
+        run: python3 pr_migrate.py
