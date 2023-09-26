@@ -78,7 +78,7 @@ ghes_repo_url = f"https://{ghes_pat}@{base_ghes_hostname}/{source_repo}.git"
 
 # Create a Github Cloud instance
 g = Github(ghec_pat)
-ghec_repo_url = f"https://x-access-token:{ghec_pat}@github.com/{source_repo}.git"
+ghec_repo_url = f"https://x-access-token:{ghec_pat}@github.com/{target_repo}.git"
 
 # Get the source and target repositories
 source_repo = ge.get_repo(f"{source_repo}")
