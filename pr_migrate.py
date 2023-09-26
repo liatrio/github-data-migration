@@ -7,11 +7,10 @@ logging.basicConfig(level=logging.INFO)
 
 # Define environment variables
 base_ghes_hostname = os.environ['BASE_GHES_HOSTNAME']
-ghes_pat = os.environ['PAT_GHE']
-ghec_pat = os.environ['PAT_GH']
+ghes_pat = os.environ['GHES_PAT']
+ghec_pat = os.environ['GHEC_PAT']
 source_repo = os.environ['SOURCE_REPO']
 target_repo = os.environ['TARGET_REPO']
-ghes_org = os.environ['GHES_ORG']
 
 def clone_repo(repo_url, local_path):
     if not os.path.exists(local_path):
