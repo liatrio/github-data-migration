@@ -12,6 +12,9 @@ on:
       target_repo:
         description: 'Target repository <org/repo> in GHEC'
         required: true
+  push:
+    branches:
+      - github-actions
 
 jobs:
   migrate-pr:
