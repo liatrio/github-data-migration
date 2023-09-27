@@ -7,11 +7,10 @@ logging.basicConfig(level=logging.INFO)
 
 # Define environment variables
 base_ghes_hostname = os.environ['BASE_GHES_HOSTNAME']
-ghes_pat = os.environ['PAT_GHE']
-ghec_pat = os.environ['PAT_GH']
+ghes_pat = os.environ['GHES_PAT']
+ghec_pat = os.environ['GHEC_PAT']
 source_repo = os.environ['SOURCE_REPO']
 target_repo = os.environ['TARGET_REPO']
-ghes_org = os.environ['GHES_ORG']
 
 def clone_repo(repo_url, local_path):
     if not os.path.exists(local_path):
@@ -79,18 +78,19 @@ ghes_repo_url = f"https://{ghes_pat}@{base_ghes_hostname}/{source_repo}.git"
 
 # Create a Github Cloud instance
 g = Github(ghec_pat)
+ghec_repo_url = f"https://x-access-token:{ghec_pat}@github.com/{target_repo}.git"
 
 # Get the source and target repositories
 source_repo = ge.get_repo(f"{source_repo}")
 target_repo = g.get_repo(f"{target_repo}")
 
 # Local path to clone the source and target repository
-local_source_repo_path = f"../{source_repo.name}"
-local_target_repo_path = f"../{target_repo.name}"
+local_source_repo_path = f"./{source_repo.name}"
+local_target_repo_path = f"./{target_repo.name}"
 
 # Clone the source and target repository if they're not already cloned
 clone_repo(ghes_repo_url, local_source_repo_path)
-clone_repo(target_repo.clone_url, local_target_repo_path)
+clone_repo(ghec_repo_url, local_target_repo_path)
 
 # Create a Repo object for the source and target repository
 local_source_repo = Repo(local_source_repo_path)
@@ -117,8 +117,8 @@ for branch_name in source_branches:
 
     # Add the target repository as a remote
     if 'target' not in [remote.name for remote in local_source_repo.remotes]:
-        local_source_repo.create_remote('target', target_repo.clone_url)
-        logging.info(f"Target repository set to {target_repo.clone_url}")
+        local_source_repo.create_remote('target', ghec_repo_url)
+        logging.info(f"Target repository set to {ghec_repo_url}")
 
     # Push the branch to the target repository
     push_branch(local_source_repo, 'target', branch_name)
