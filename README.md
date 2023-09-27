@@ -10,7 +10,7 @@ This project includes a collection of Python scripts designed to migrate reposit
 
 *issue_migrate* will grab all the issues listed in the source repository. It will then recreate them in the target repository utilizing GitHub's REST Api. Since we are recreating the issues to the new repository it will not retain the orginal issue number if there are pre-existing issues in the target repository. This script does not attach comments and fully re-assign the assigness to the issues should the account not exist in the target host. In place of that the script will attach the username in the description for future reference. 
 
->**Note:** Since we are recreating issues the creator the issue will be the user the PAT is associated with.
+>**Note:** Since we are recreating issues the creator of the issue will be the user the PAT is associated with.
 
 ### Migrating Projects
 
