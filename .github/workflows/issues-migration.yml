@@ -31,8 +31,4 @@ jobs:
 
       - name: Migrate issues
         run: python3 issue_migrate.py
-      
-      - name: Migrate Projects (classic)
-        run: python3 project_migrate.py
-
 
