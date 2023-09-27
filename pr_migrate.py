@@ -117,8 +117,8 @@ for branch_name in source_branches:
 
     # Add the target repository as a remote
     if 'target' not in [remote.name for remote in local_source_repo.remotes]:
-        local_source_repo.create_remote('target', target_repo.clone_url)
-        logging.info(f"Target repository set to {target_repo.clone_url}")
+        local_source_repo.create_remote('target', ghec_repo_url)
+        logging.info(f"Target repository set to {ghec_repo_url}")
 
     # Push the branch to the target repository
     push_branch(local_source_repo, 'target', branch_name)
