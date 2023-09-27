@@ -1,4 +1,4 @@
-name: Issues Migration from GHES to GHEC
+name: Project Board Migration from GHES to GHEC
 
 on:
   workflow_dispatch:
@@ -28,7 +28,6 @@ jobs:
 
       - name: Install Python libraries
         run: pip3 install -r requirements.txt
-
-      - name: Migrate issues
-        run: python3 issue_migrate.py
-
+      
+      - name: Migrate Projects (classic)
+        run: python3 project_migrate.py
