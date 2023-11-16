@@ -15,4 +15,3 @@ jobs:
       - name: Test
         run: |
           echo "Hello world!"
-          echo "Another push"
